@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Precio de la gasolina hoy en Santa Cruz de Tenerife</title>
+<meta name="description" content="Precio medio de la gasolina 95 y el gasoleo A hoy en Santa Cruz de Tenerife, con las 10 estaciones mas baratas. Datos oficiales del Ministerio.">
+<link rel="canonical" href="https://adrianezd.github.io/proyecciones-gasolina/38">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Precio de la gasolina hoy en Santa Cruz de Tenerife">
+<meta property="og:description" content="Precio medio de la gasolina 95 y el gasoleo A hoy en Santa Cruz de Tenerife, con las 10 estaciones mas baratas. Datos oficiales del Ministerio.">
+<meta property="og:locale" content="es_ES">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estatico/estilo.css">
+
+</head>
+<body data-acento="gasolina">
+
+<nav class="barra" aria-label="Secciones">
+  <a class="marca" href="https://adrianezd.github.io/proyecciones/">Proyecciones</a>
+  <div class="enlaces"><a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/" aria-current="page">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en Espana</a>
+  </div>
+</nav>
+
+<main class="marco">
+
+<h1>Precio de la gasolina hoy en Santa Cruz de Tenerife</h1>
+<p class="bajada">Lo que cuesta repostar ahora mismo en Santa Cruz de Tenerife, con los precios que cada estacion declara al Ministerio.</p>
+
+<div class="mandos">
+  <div class="mando">
+    <label for="provincia">Provincia</label>
+    <select id="provincia">
+      <option value="01">Álava</option>
+      <option value="02">Albacete</option>
+      <option value="03">Alicante</option>
+      <option value="04">Almería</option>
+      <option value="05">Ávila</option>
+      <option value="06">Badajoz</option>
+      <option value="07">Illes Balears</option>
+      <option value="08">Barcelona</option>
+      <option value="09">Burgos</option>
+      <option value="10">Cáceres</option>
+      <option value="11">Cádiz</option>
+      <option value="12">Castellón</option>
+      <option value="13">Ciudad Real</option>
+      <option value="14">Córdoba</option>
+      <option value="15">A Coruña</option>
+      <option value="16">Cuenca</option>
+      <option value="17">Girona</option>
+      <option value="18">Granada</option>
+      <option value="19">Guadalajara</option>
+      <option value="20">Gipuzkoa</option>
+      <option value="21">Huelva</option>
+      <option value="22">Huesca</option>
+      <option value="23">Jaén</option>
+      <option value="24">León</option>
+      <option value="25">Lleida</option>
+      <option value="26">La Rioja</option>
+      <option value="27">Lugo</option>
+      <option value="28">Madrid</option>
+      <option value="29">Málaga</option>
+      <option value="30">Murcia</option>
+      <option value="31">Navarra</option>
+      <option value="32">Ourense</option>
+      <option value="33">Asturias</option>
+      <option value="34">Palencia</option>
+      <option value="35">Las Palmas</option>
+      <option value="36">Pontevedra</option>
+      <option value="37">Salamanca</option>
+      <option value="38" selected>Santa Cruz de Tenerife</option>
+      <option value="39">Cantabria</option>
+      <option value="40">Segovia</option>
+      <option value="41">Sevilla</option>
+      <option value="42">Soria</option>
+      <option value="43">Tarragona</option>
+      <option value="44">Teruel</option>
+      <option value="45">Toledo</option>
+      <option value="46">Valencia</option>
+      <option value="47">Valladolid</option>
+      <option value="48">Bizkaia</option>
+      <option value="49">Zamora</option>
+      <option value="50">Zaragoza</option>
+      <option value="51">Ceuta</option>
+      <option value="52">Melilla</option>
+    </select>
+  </div>
+</div>
+
+<section class="resultado">
+  <p class="resultado-intro">Precio tipico de la gasolina 95</p>
+  <p class="cifrota" id="med95">—</p>
+  <p class="rango" id="med-diesel"></p>
+</section>
+
+<div class="tarjetas">
+  <div><span class="dato-valor" id="d-total">—</span><span class="dato-nombre">estaciones</span></div>
+  <div><span class="dato-valor" id="d-min">—</span><span class="dato-nombre">la mas barata</span></div>
+  <div><span class="dato-valor" id="d-ahorro">—</span><span class="dato-nombre">ahorro en 50 litros</span></div>
+</div>
+
+<h2>Como se reparten los precios</h2>
+<p class="apunte">Cada barra cuenta las estaciones que venden a ese precio. Toca la grafica para ver cuantas hay en cada tramo.</p>
+<div id="gr-hist"></div>
+
+<h2>Las diez mas baratas</h2>
+<div id="ranking"></div>
+
+<h2>Por que el precio cambia tanto de una provincia a otra</h2>
+<p>Repostar no cuesta lo mismo en Huelva que en Girona, y la diferencia no es pequeña. Pesan tres cosas: la logistica, porque las provincias con refineria o deposito cerca pagan menos transporte; la competencia, ya que donde hay muchas estaciones independientes y supermercados con surtidor los precios bajan; y la fiscalidad, porque las comunidades autonomas han aplicado tramos propios y Canarias, Ceuta y Melilla tienen un regimen distinto del peninsular.</p>
+
+<h2>Cuando conviene repostar</h2>
+<p>La mayoria de estaciones revisa precios a principios de semana, asi que lunes y martes suelen ser algo mas baratos y el fin de semana mas caro, sobre todo en areas de servicio de autopista. Aun asi, la diferencia entre la estacion mas barata y la mas cara de una misma ciudad suele ser mayor que la diferencia entre dias: importa mas donde repostas que cuando.</p>
+
+
+<footer class="pie">
+
+<p>Fuente: Ministerio para la Transicion Ecologica y el Reto Demografico, servicio publico de precios de carburantes.</p>
+<p>Precios orientativos. Comprueba el surtidor antes de repostar.</p>
+
+<p>Generado el 2026-09-02. Los datos se actualizan solos con una GitHub Action. Parte de <a href="https://adrianezd.github.io/proyecciones/">Proyecciones</a>.</p>
+</footer>
+</main>
+
+<script src="../estatico/grafica.js"></script>
+
+<script id="datos" type="application/json">{"provincia": {"cod": "38", "nombre": "Santa Cruz de Tenerife", "total": 241, "med95": 1.489, "medDiesel": 1.589, "min": 1.275, "max": 1.752, "hist": {"min": 1.275, "max": 1.752, "cubos": [{"desde": 1.275, "hasta": 1.295, "cuantas": 1}, {"desde": 1.295, "hasta": 1.315, "cuantas": 0}, {"desde": 1.315, "hasta": 1.335, "cuantas": 2}, {"desde": 1.335, "hasta": 1.354, "cuantas": 3}, {"desde": 1.354, "hasta": 1.374, "cuantas": 4}, {"desde": 1.374, "hasta": 1.394, "cuantas": 5}, {"desde": 1.394, "hasta": 1.414, "cuantas": 12}, {"desde": 1.414, "hasta": 1.434, "cuantas": 5}, {"desde": 1.434, "hasta": 1.454, "cuantas": 19}, {"desde": 1.454, "hasta": 1.474, "cuantas": 34}, {"desde": 1.474, "hasta": 1.494, "cuantas": 65}, {"desde": 1.494, "hasta": 1.514, "cuantas": 31}, {"desde": 1.514, "hasta": 1.533, "cuantas": 20}, {"desde": 1.533, "hasta": 1.553, "cuantas": 3}, {"desde": 1.553, "hasta": 1.573, "cuantas": 4}, {"desde": 1.573, "hasta": 1.593, "cuantas": 10}, {"desde": 1.593, "hasta": 1.613, "cuantas": 1}, {"desde": 1.613, "hasta": 1.633, "cuantas": 1}, {"desde": 1.633, "hasta": 1.653, "cuantas": 0}, {"desde": 1.653, "hasta": 1.672, "cuantas": 3}, {"desde": 1.672, "hasta": 1.692, "cuantas": 8}, {"desde": 1.692, "hasta": 1.712, "cuantas": 1}, {"desde": 1.712, "hasta": 1.732, "cuantas": 1}, {"desde": 1.732, "hasta": 1.752, "cuantas": 7}]}, "baratas": [{"rotulo": "Canary Oil, S.L.", "direccion": "Calle Subida Al Mayorazgo, 7", "municipio": "Santa Cruz De Tenerife", "g95": 1.275, "gasoleo": 1.449}, {"rotulo": "Océano Taco", "direccion": "Calle Santa Amelia, 20", "municipio": "San Cristóbal De La Laguna", "g95": 1.329, "gasoleo": 1.539}, {"rotulo": "E.S. Océano Santa Cruz", "direccion": "Calle Panamá, 9", "municipio": "Santa Cruz De Tenerife", "g95": 1.329, "gasoleo": 1.529}, {"rotulo": "Gmoil", "direccion": "Calle Laura Grote De La Puerta, 2", "municipio": "Santa Cruz De Tenerife", "g95": 1.339, "gasoleo": 1.469}, {"rotulo": "Tgas-Tu Trébol", "direccion": "Poligono El Mayorazgo, S/N", "municipio": "Santa Cruz De Tenerife", "g95": 1.34, "gasoleo": 1.469}, {"rotulo": "Shell El Ramonal", "direccion": "Carretera Santa Cruz- La Laguna Km. 3,7", "municipio": "Santa Cruz De Tenerife", "g95": 1.349, "gasoleo": 1.499}, {"rotulo": "Gmoil", "direccion": "Calle Charfa Esquina Avenida Las Palmitas, S/N", "municipio": "Adeje", "g95": 1.359, "gasoleo": 1.469}, {"rotulo": "H2Exagon Arafo", "direccion": "Poligono Poligono Industrial El Carreton, Parcela 1.6, S/N", "municipio": "Arafo", "g95": 1.359, "gasoleo": 1.459}, {"rotulo": "Tgas-Tu Trébol", "direccion": "Autopista Tf1 Autopista Sur A Armeñime, Cruce La Caleta Km. S/N", "municipio": "Adeje", "g95": 1.36, "gasoleo": 1.469}, {"rotulo": "Plenergy", "direccion": "Calle Camino La Molineta Polígono El Carretón, S/N", "municipio": "Arafo", "g95": 1.369, "gasoleo": 1.469}]}, "raiz": "../"}</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById("datos").textContent);
+  const $ = (i)=>document.getElementById(i);
+  const litro = v => Grafica.numero(v,3)+" €";
+
+  function pintar(p){
+    $("med95").textContent = p.med95 ? litro(p.med95) : "—";
+    Grafica.frase("#med-diesel", p.medDiesel ? ["Gasoleo A: ", {fuerte: litro(p.medDiesel)}] : []);
+    $("d-total").textContent = p.total;
+    $("d-min").textContent = p.min ? litro(p.min) : "—";
+    $("d-ahorro").textContent = (p.med95 && p.min) ? Grafica.numero((p.med95-p.min)*50,2)+" €" : "—";
+
+    Grafica.histograma("#gr-hist", {cubos:p.hist.cubos, unidad:" €", titulo:"Distribucion de precios"});
+
+    Grafica.lista("#ranking", p.baratas.map(e => ({
+      nombre: e.rotulo,
+      valor: litro(e.g95),
+      sub: e.municipio + (e.direccion ? " — " + e.direccion : "")
+    })));
+  }
+
+  const sel = $("provincia");
+  sel.addEventListener("change", async () => {
+    try{
+      const r = await fetch(D.raiz+"datos/"+sel.value+".json");
+      pintar(await r.json());
+      history.replaceState(null,"",D.raiz+sel.value+"/");
+    }catch(e){ console.error(e); }
+  });
+
+  pintar(D.provincia);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Precio de la gasolina hoy en Cuenca</title>
+<meta name="description" content="Precio medio de la gasolina 95 y el gasoleo A hoy en Cuenca, con las 10 estaciones mas baratas. Datos oficiales del Ministerio.">
+<link rel="canonical" href="https://adrianezd.github.io/proyecciones-gasolina/16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Precio de la gasolina hoy en Cuenca">
+<meta property="og:description" content="Precio medio de la gasolina 95 y el gasoleo A hoy en Cuenca, con las 10 estaciones mas baratas. Datos oficiales del Ministerio.">
+<meta property="og:locale" content="es_ES">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estatico/estilo.css">
+
+</head>
+<body data-acento="gasolina">
+
+<nav class="barra" aria-label="Secciones">
+  <a class="marca" href="https://adrianezd.github.io/proyecciones/">Proyecciones</a>
+  <div class="enlaces"><a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/" aria-current="page">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en Espana</a>
+  </div>
+</nav>
+
+<main class="marco">
+
+<h1>Precio de la gasolina hoy en Cuenca</h1>
+<p class="bajada">Lo que cuesta repostar ahora mismo en Cuenca, con los precios que cada estacion declara al Ministerio.</p>
+
+<div class="mandos">
+  <div class="mando">
+    <label for="provincia">Provincia</label>
+    <select id="provincia">
+      <option value="01">Álava</option>
+      <option value="02">Albacete</option>
+      <option value="03">Alicante</option>
+      <option value="04">Almería</option>
+      <option value="05">Ávila</option>
+      <option value="06">Badajoz</option>
+      <option value="07">Illes Balears</option>
+      <option value="08">Barcelona</option>
+      <option value="09">Burgos</option>
+      <option value="10">Cáceres</option>
+      <option value="11">Cádiz</option>
+      <option value="12">Castellón</option>
+      <option value="13">Ciudad Real</option>
+      <option value="14">Córdoba</option>
+      <option value="15">A Coruña</option>
+      <option value="16" selected>Cuenca</option>
+      <option value="17">Girona</option>
+      <option value="18">Granada</option>
+      <option value="19">Guadalajara</option>
+      <option value="20">Gipuzkoa</option>
+      <option value="21">Huelva</option>
+      <option value="22">Huesca</option>
+      <option value="23">Jaén</option>
+      <option value="24">León</option>
+      <option value="25">Lleida</option>
+      <option value="26">La Rioja</option>
+      <option value="27">Lugo</option>
+      <option value="28">Madrid</option>
+      <option value="29">Málaga</option>
+      <option value="30">Murcia</option>
+      <option value="31">Navarra</option>
+      <option value="32">Ourense</option>
+      <option value="33">Asturias</option>
+      <option value="34">Palencia</option>
+      <option value="35">Las Palmas</option>
+      <option value="36">Pontevedra</option>
+      <option value="37">Salamanca</option>
+      <option value="38">Santa Cruz de Tenerife</option>
+      <option value="39">Cantabria</option>
+      <option value="40">Segovia</option>
+      <option value="41">Sevilla</option>
+      <option value="42">Soria</option>
+      <option value="43">Tarragona</option>
+      <option value="44">Teruel</option>
+      <option value="45">Toledo</option>
+      <option value="46">Valencia</option>
+      <option value="47">Valladolid</option>
+      <option value="48">Bizkaia</option>
+      <option value="49">Zamora</option>
+      <option value="50">Zaragoza</option>
+      <option value="51">Ceuta</option>
+      <option value="52">Melilla</option>
+    </select>
+  </div>
+</div>
+
+<section class="resultado">
+  <p class="resultado-intro">Precio tipico de la gasolina 95</p>
+  <p class="cifrota" id="med95">—</p>
+  <p class="rango" id="med-diesel"></p>
+</section>
+
+<div class="tarjetas">
+  <div><span class="dato-valor" id="d-total">—</span><span class="dato-nombre">estaciones</span></div>
+  <div><span class="dato-valor" id="d-min">—</span><span class="dato-nombre">la mas barata</span></div>
+  <div><span class="dato-valor" id="d-ahorro">—</span><span class="dato-nombre">ahorro en 50 litros</span></div>
+</div>
+
+<h2>Como se reparten los precios</h2>
+<p class="apunte">Cada barra cuenta las estaciones que venden a ese precio. Toca la grafica para ver cuantas hay en cada tramo.</p>
+<div id="gr-hist"></div>
+
+<h2>Las diez mas baratas</h2>
+<div id="ranking"></div>
+
+<h2>Por que el precio cambia tanto de una provincia a otra</h2>
+<p>Repostar no cuesta lo mismo en Huelva que en Girona, y la diferencia no es pequeña. Pesan tres cosas: la logistica, porque las provincias con refineria o deposito cerca pagan menos transporte; la competencia, ya que donde hay muchas estaciones independientes y supermercados con surtidor los precios bajan; y la fiscalidad, porque las comunidades autonomas han aplicado tramos propios y Canarias, Ceuta y Melilla tienen un regimen distinto del peninsular.</p>
+
+<h2>Cuando conviene repostar</h2>
+<p>La mayoria de estaciones revisa precios a principios de semana, asi que lunes y martes suelen ser algo mas baratos y el fin de semana mas caro, sobre todo en areas de servicio de autopista. Aun asi, la diferencia entre la estacion mas barata y la mas cara de una misma ciudad suele ser mayor que la diferencia entre dias: importa mas donde repostas que cuando.</p>
+
+
+<footer class="pie">
+
+<p>Fuente: Ministerio para la Transicion Ecologica y el Reto Demografico, servicio publico de precios de carburantes.</p>
+<p>Precios orientativos. Comprueba el surtidor antes de repostar.</p>
+
+<p>Generado el 2026-09-02. Los datos se actualizan solos con una GitHub Action. Parte de <a href="https://adrianezd.github.io/proyecciones/">Proyecciones</a>.</p>
+</footer>
+</main>
+
+<script src="../estatico/grafica.js"></script>
+
+<script id="datos" type="application/json">{"provincia": {"cod": "16", "nombre": "Cuenca", "total": 115, "med95": 1.849, "medDiesel": 1.829, "min": 1.619, "max": 2.039, "hist": {"min": 1.619, "max": 2.039, "cubos": [{"desde": 1.619, "hasta": 1.637, "cuantas": 2}, {"desde": 1.637, "hasta": 1.654, "cuantas": 5}, {"desde": 1.654, "hasta": 1.671, "cuantas": 3}, {"desde": 1.671, "hasta": 1.689, "cuantas": 1}, {"desde": 1.689, "hasta": 1.707, "cuantas": 3}, {"desde": 1.707, "hasta": 1.724, "cuantas": 2}, {"desde": 1.724, "hasta": 1.742, "cuantas": 3}, {"desde": 1.742, "hasta": 1.759, "cuantas": 3}, {"desde": 1.759, "hasta": 1.776, "cuantas": 2}, {"desde": 1.776, "hasta": 1.794, "cuantas": 5}, {"desde": 1.794, "hasta": 1.812, "cuantas": 7}, {"desde": 1.812, "hasta": 1.829, "cuantas": 6}, {"desde": 1.829, "hasta": 1.847, "cuantas": 3}, {"desde": 1.847, "hasta": 1.864, "cuantas": 12}, {"desde": 1.864, "hasta": 1.881, "cuantas": 14}, {"desde": 1.881, "hasta": 1.899, "cuantas": 30}, {"desde": 1.899, "hasta": 1.917, "cuantas": 1}, {"desde": 1.917, "hasta": 1.934, "cuantas": 0}, {"desde": 1.934, "hasta": 1.952, "cuantas": 1}, {"desde": 1.952, "hasta": 1.969, "cuantas": 1}, {"desde": 1.969, "hasta": 1.987, "cuantas": 0}, {"desde": 1.987, "hasta": 2.004, "cuantas": 0}, {"desde": 2.004, "hasta": 2.022, "cuantas": 0}, {"desde": 2.022, "hasta": 2.039, "cuantas": 1}]}, "baratas": [{"rotulo": "E.S. Valenciano Medina", "direccion": "Carretera Cm-310 Km. 47,6", "municipio": "Villamayor De Santiago", "g95": 1.619, "gasoleo": 1.759}, {"rotulo": "U.S. David Collado", "direccion": "Avenida De La Industria, 11", "municipio": "Casasimarro", "g95": 1.629, "gasoleo": 1.779}, {"rotulo": "Plenergy", "direccion": "Avenida Reyes Catolicos, 68", "municipio": "Cuenca", "g95": 1.639, "gasoleo": 1.667}, {"rotulo": "Ballenoil", "direccion": "Avenida De Los Alfares, 21", "municipio": "Cuenca", "g95": 1.639, "gasoleo": 1.617}, {"rotulo": "C.C Alcampo", "direccion": "Carretera Nacional 400 Km. 178,5", "municipio": "Cuenca", "g95": 1.639, "gasoleo": 1.617}, {"rotulo": "E.S.D Villanueva De La Jara", "direccion": "Carretera N-310 Km. 197", "municipio": "Villanueva De La Jara", "g95": 1.639, "gasoleo": 1.789}, {"rotulo": "Lapeña Moratalla, S.L.", "direccion": "Carretera Roda (La) Km. 72", "municipio": "Casasimarro", "g95": 1.649, "gasoleo": 1.799}, {"rotulo": "Sis Carburantes", "direccion": "Poligono Palancares, 4", "municipio": "Cuenca", "g95": 1.669, "gasoleo": 1.669}, {"rotulo": "Autonet\u0026Oil", "direccion": "Avenida Rey Juan Carlos I (Del), 30", "municipio": "Cuenca", "g95": 1.669, "gasoleo": 1.719}, {"rotulo": "Superoil", "direccion": "Carretera N320 Km. 45,3", "municipio": "Quintanar Del Rey", "g95": 1.669, "gasoleo": 1.769}]}, "raiz": "../"}</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById("datos").textContent);
+  const $ = (i)=>document.getElementById(i);
+  const litro = v => Grafica.numero(v,3)+" €";
+
+  function pintar(p){
+    $("med95").textContent = p.med95 ? litro(p.med95) : "—";
+    Grafica.frase("#med-diesel", p.medDiesel ? ["Gasoleo A: ", {fuerte: litro(p.medDiesel)}] : []);
+    $("d-total").textContent = p.total;
+    $("d-min").textContent = p.min ? litro(p.min) : "—";
+    $("d-ahorro").textContent = (p.med95 && p.min) ? Grafica.numero((p.med95-p.min)*50,2)+" €" : "—";
+
+    Grafica.histograma("#gr-hist", {cubos:p.hist.cubos, unidad:" €", titulo:"Distribucion de precios"});
+
+    Grafica.lista("#ranking", p.baratas.map(e => ({
+      nombre: e.rotulo,
+      valor: litro(e.g95),
+      sub: e.municipio + (e.direccion ? " — " + e.direccion : "")
+    })));
+  }
+
+  const sel = $("provincia");
+  sel.addEventListener("change", async () => {
+    try{
+      const r = await fetch(D.raiz+"datos/"+sel.value+".json");
+      pintar(await r.json());
+      history.replaceState(null,"",D.raiz+sel.value+"/");
+    }catch(e){ console.error(e); }
+  });
+
+  pintar(D.provincia);
+})();
+</script>
+
+</body>
+</html>

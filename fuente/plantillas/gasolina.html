@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Precio de la gasolina hoy{% if provincia %} en {{ provincia }}{% endif %}</h1>
+<p class="bajada">Lo que cuesta repostar ahora mismo{% if provincia %} en {{ provincia }}{% else %} en tu provincia{% endif %}, con los precios que cada estacion declara al Ministerio.</p>
+
+<div class="mandos">
+  <div class="mando">
+    <label for="provincia">Provincia</label>
+    <select id="provincia">
+      {%- for cod, nombre in provincias %}
+      <option value="{{ cod }}"{% if cod == cod_actual %} selected{% endif %}>{{ nombre }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+</div>
+
+<section class="resultado">
+  <p class="resultado-intro">Precio tipico de la gasolina 95</p>
+  <p class="cifrota" id="med95">—</p>
+  <p class="rango" id="med-diesel"></p>
+</section>
+
+<div class="tarjetas">
+  <div><span class="dato-valor" id="d-total">—</span><span class="dato-nombre">estaciones</span></div>
+  <div><span class="dato-valor" id="d-min">—</span><span class="dato-nombre">la mas barata</span></div>
+  <div><span class="dato-valor" id="d-ahorro">—</span><span class="dato-nombre">ahorro en 50 litros</span></div>
+</div>
+
+<h2>Como se reparten los precios</h2>
+<p class="apunte">Cada barra cuenta las estaciones que venden a ese precio. Toca la grafica para ver cuantas hay en cada tramo.</p>
+<div id="gr-hist"></div>
+
+<h2>Las diez mas baratas</h2>
+<div id="ranking"></div>
+
+<h2>Por que el precio cambia tanto de una provincia a otra</h2>
+<p>Repostar no cuesta lo mismo en Huelva que en Girona, y la diferencia no es pequeña. Pesan tres cosas: la logistica, porque las provincias con refineria o deposito cerca pagan menos transporte; la competencia, ya que donde hay muchas estaciones independientes y supermercados con surtidor los precios bajan; y la fiscalidad, porque las comunidades autonomas han aplicado tramos propios y Canarias, Ceuta y Melilla tienen un regimen distinto del peninsular.</p>
+
+<h2>Cuando conviene repostar</h2>
+<p>La mayoria de estaciones revisa precios a principios de semana, asi que lunes y martes suelen ser algo mas baratos y el fin de semana mas caro, sobre todo en areas de servicio de autopista. Aun asi, la diferencia entre la estacion mas barata y la mas cara de una misma ciudad suele ser mayor que la diferencia entre dias: importa mas donde repostas que cuando.</p>
+{% endblock %}
+
+{% block fuente %}
+<p>Fuente: Ministerio para la Transicion Ecologica y el Reto Demografico, servicio publico de precios de carburantes.</p>
+<p>Precios orientativos. Comprueba el surtidor antes de repostar.</p>
+{% endblock %}
+
+{% block script %}
+<script id="datos" type="application/json">{{ datos_json | safe }}</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById("datos").textContent);
+  const $ = (i)=>document.getElementById(i);
+  const litro = v => Grafica.numero(v,3)+" €";
+
+  function pintar(p){
+    $("med95").textContent = p.med95 ? litro(p.med95) : "—";
+    Grafica.frase("#med-diesel", p.medDiesel ? ["Gasoleo A: ", {fuerte: litro(p.medDiesel)}] : []);
+    $("d-total").textContent = p.total;
+    $("d-min").textContent = p.min ? litro(p.min) : "—";
+    $("d-ahorro").textContent = (p.med95 && p.min) ? Grafica.numero((p.med95-p.min)*50,2)+" €" : "—";
+
+    Grafica.histograma("#gr-hist", {cubos:p.hist.cubos, unidad:" €", titulo:"Distribucion de precios"});
+
+    Grafica.lista("#ranking", p.baratas.map(e => ({
+      nombre: e.rotulo,
+      valor: litro(e.g95),
+      sub: e.municipio + (e.direccion ? " — " + e.direccion : "")
+    })));
+  }
+
+  const sel = $("provincia");
+  sel.addEventListener("change", async () => {
+    try{
+      const r = await fetch(D.raiz+"datos/"+sel.value+".json");
+      pintar(await r.json());
+      history.replaceState(null,"",D.raiz+sel.value+"/");
+    }catch(e){ console.error(e); }
+  });
+
+  pintar(D.provincia);
+})();
+</script>
+{% endblock %}
