@@ -80,18 +80,31 @@ def main() -> None:
 
         p95 = sorted(e["g95"] for e in estaciones if e["g95"])
         pga = sorted(e["gasoleo"] for e in estaciones if e["gasoleo"])
-        baratas = sorted((e for e in estaciones if e["g95"]), key=lambda e: e["g95"])[:10]
+        baratas95 = sorted((e for e in estaciones if e["g95"]), key=lambda e: e["g95"])[:10]
+        baratasDiesel = sorted((e for e in estaciones if e["gasoleo"]), key=lambda e: e["gasoleo"])[:10]
 
         paquete = {
             "cod": cod,
             "nombre": nombre,
             "total": len(estaciones),
-            "med95": round(calculo.percentil(p95, 0.5), 3) if p95 else None,
-            "medDiesel": round(calculo.percentil(pga, 0.5), 3) if pga else None,
-            "min": p95[0] if p95 else None,
-            "max": p95[-1] if p95 else None,
-            "hist": calculo.histograma(p95 or pga),
-            "baratas": baratas,
+            "combustibles": {
+                "g95": {
+                    "etiqueta": "Gasolina 95",
+                    "med": round(calculo.percentil(p95, 0.5), 3) if p95 else None,
+                    "min": p95[0] if p95 else None,
+                    "max": p95[-1] if p95 else None,
+                    "hist": calculo.histograma(p95),
+                    "baratas": baratas95,
+                } if p95 else None,
+                "gasoleo": {
+                    "etiqueta": "Gasoleo A",
+                    "med": round(calculo.percentil(pga, 0.5), 3) if pga else None,
+                    "min": pga[0] if pga else None,
+                    "max": pga[-1] if pga else None,
+                    "hist": calculo.histograma(pga),
+                    "baratas": baratasDiesel,
+                } if pga else None,
+            },
         }
 
         (carpeta_datos / f"{cod}.json").write_text(json.dumps(paquete), encoding="utf-8")
@@ -103,7 +116,7 @@ def main() -> None:
             cod, "gasolina.html",
             titulo=f"Precio de la gasolina hoy en {nombre}",
             descripcion=f"Precio medio de la gasolina 95 y el gasoleo A hoy en {nombre}, "
-                        f"con las {len(baratas)} estaciones mas baratas. Datos oficiales del Ministerio.",
+                        f"con las estaciones mas baratas. Datos oficiales del Ministerio.",
             acento="gasolina",
             provincia=nombre,
             cod_actual=cod,
